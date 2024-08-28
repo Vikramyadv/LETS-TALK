@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@chakra-ui/button";
 import {
   Tooltip,
@@ -32,11 +32,21 @@ import NotificationBadge from "react-notification-badge";
 import Effect from "react-notification-badge";
 
 const SideDrawer = () => {
+  const string = useState("");
+  console.log(string);
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState(false);
 
+  let a = 2;
+  let b = 2;
+  let c = 2;
+  if ((a == b) == c) {
+    console.log("hello");
+  } else {
+    console.log("false");
+  }
   const toast = useToast();
   const {
     user,
@@ -53,6 +63,10 @@ const SideDrawer = () => {
     localStorage.removeItem("userInfo");
     history.push("/");
   };
+
+  useEffect(() => {
+    console.log("vikrsm");
+  }, []);
 
   const handleSearch = async () => {
     if (!search) {
@@ -203,11 +217,11 @@ const SideDrawer = () => {
               />
               <Button onClick={handleSearch}>Go</Button>
             </Box>
-            
+
             {loading ? (
               <ChatLoading />
             ) : (
-                searchResult?.map((user) => (
+              searchResult?.map((user) => (
                 <UserListItem
                   key={user._id}
                   user={user}
